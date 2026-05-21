@@ -2,13 +2,15 @@ import { LockKeyhole, Mail, Phone, UserRound } from 'lucide-react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from '../components/Button.jsx';
+import API from "../api/api.js";
 
-function Signup({ onAuth, onToast }) {
+function register({ onAuth, onToast }) {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
+    password: "",
   });
 
   function handleChange(event) {
@@ -19,20 +21,32 @@ function Signup({ onAuth, onToast }) {
     }));
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (!formData.name.trim() || !formData.email.trim() || !formData.phone.trim()) {
-      onToast({
-        title: 'Complete your profile',
-        message: 'Name, email, and phone are needed for this safety profile.',
-        type: 'error',
-      });
-      return;
-    }
+  async function handleSubmit(event) {
+  event.preventDefault();
 
-    onAuth(formData);
-    navigate('/dashboard');
+  try {
+    const response = await API.post("/auth/signup", {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      password: formData.password,
+    });
+
+    localStorage.setItem(
+      "token",
+      response.data.token
+    );
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(response.data.user)
+    );
+
+    navigate("/dashboard");
+  } catch (error) {
+    alert(error.response.data.message);
   }
+}
 
   return (
     <main className="min-h-screen bg-transparent px-4 py-10">
@@ -112,4 +126,4 @@ function Signup({ onAuth, onToast }) {
   );
 }
 
-export default Signup;
+export default register;

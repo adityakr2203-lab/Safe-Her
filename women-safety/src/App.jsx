@@ -17,7 +17,7 @@ import EmergencySOS from './pages/EmergencySOS.jsx';
 import Login from './pages/Login.jsx';
 import Location from './pages/Location.jsx';
 import Profile from './pages/Profile.jsx';
-import Signup from './pages/Signup.jsx';
+import register from './pages/register.jsx';
 import TrustedContacts from './pages/TrustedContacts.jsx';
 import ToastContainer from './components/ToastContainer.jsx';
 
@@ -133,6 +133,7 @@ function App() {
           <Route path="/location" element={<Location />} />
           <Route path="/sos" element={<EmergencySOS />} />
           <Route path="/profile" element={<Profile />} />
+          
         </Route>
         <Route path="*" element={<Navigate to="/dashboard" replace />} />
       </Routes>

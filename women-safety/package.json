@@ -11,20 +11,21 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "latest",
-    "vite": "latest",
+    "axios": "^1.16.1",
+    "lucide-react": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-router-dom": "latest",
-    "lucide-react": "latest"
+    "vite": "latest"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.17",
-    "postcss": "latest",
+    "@eslint/js": "latest",
     "autoprefixer": "latest",
     "eslint": "latest",
-    "@eslint/js": "latest",
     "eslint-plugin-react-hooks": "latest",
     "eslint-plugin-react-refresh": "latest",
-    "globals": "latest"
+    "globals": "latest",
+    "postcss": "latest",
+    "tailwindcss": "^3.4.17"
   }
 }
