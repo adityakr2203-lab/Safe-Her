@@ -1,7 +1,7 @@
 const userModel = require('../models/user.model');
 
 
-module.exports.registerUser = async ({
+module.exports.createUser = async ({
     fullname,email,password,mobile
 
 }) => {

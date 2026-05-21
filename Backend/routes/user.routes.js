@@ -20,4 +20,4 @@ router.post('/register', [
 
 
 
-modules.exports = router;
+module.exports = router;
